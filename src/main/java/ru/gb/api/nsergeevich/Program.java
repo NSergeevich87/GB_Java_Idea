@@ -1,9 +1,9 @@
-package ru.gb.api.nsergeevich.lection_1;
+package ru.gb.api.nsergeevich;
 
 import java.util.Scanner;
 
 public class Program {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         printName();
