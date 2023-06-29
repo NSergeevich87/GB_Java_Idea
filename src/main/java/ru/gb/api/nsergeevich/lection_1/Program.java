@@ -1,4 +1,4 @@
-package ru.gb.api.nsergeevich;
+package ru.gb.api.nsergeevich.lection_1;
 
 import java.util.Scanner;
 
