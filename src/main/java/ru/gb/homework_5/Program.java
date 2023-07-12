@@ -20,7 +20,7 @@ public class Program {
         };
 
         //String contacts = "Иванов 89991112233";
-        PhoneBook pb = new PhoneBook();
+        Book pb = new Book();
         for (int i = 0; i < contacts.length; i++) {
             String[] parts = contacts[i].split(" ");
             pb.add(parts[0], parts[1]);
