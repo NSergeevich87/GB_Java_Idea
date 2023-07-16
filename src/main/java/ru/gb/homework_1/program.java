@@ -1,31 +1,49 @@
 package ru.gb.homework_1;
-import java.io.PrintStream;
+
 import java.util.Scanner;
 
 public class program {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        boolean programStop = false;
-        while (programStop == false){
-            System.out.println("Введите номер задачи 1-4: ");
-            String taskNumber = scanner.nextLine();
-            switch (taskNumber) {
-                case "1":
-                    programStop = task1();
-                    break;
-                case "2":
-                    programStop = task2();
-                    break;
-                case "3":
-                    programStop = task3();
-                    break;
-                case "4":
-                    programStop = task4();
-                    break;
-//                default:
-//                    System.out.println("Введенное значение не соответствует требуемому!");
-            }
+
+        int a = 0;
+        char op = ' ';
+        int b = 0;
+
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            a = 3;
+            op = '+';
+            b = 7;
+        } else {
+            a = Integer.parseInt(args[0]);
+            op = args[1].charAt(0);
+            b = Integer.parseInt(args[2]);
         }
+        int result = Calculate(op, a, b);
+        System.out.println(result);
+
+//        boolean programStop = false;
+//        while (programStop == false){
+//            System.out.println("Введите номер задачи 1-4: ");
+//            String taskNumber = scanner.nextLine();
+//            switch (taskNumber) {
+//                case "1":
+//                    programStop = task1();
+//                    break;
+//                case "2":
+//                    programStop = task2();
+//                    break;
+//                case "3":
+//                    programStop = task3();
+//                    break;
+//                case "4":
+//                    programStop = task4();
+//                    break;
+////                default:
+////                    System.out.println("Введенное значение не соответствует требуемому!");
+//            }
+//        }
     }
 
     static boolean task1(){
@@ -176,5 +194,28 @@ public class program {
         String ans = scanner.next();
         if (ans.equals("n")){ return true; }
         else return false;
+    }
+    public static int Calculate(char op, int a, int b){
+        int num1 = a;
+        int num2 = b;
+        String operation = String.valueOf(op);
+        int result = 0;
+        switch (operation){
+            case "/":
+                result = (num1 / num2);
+                break;
+            case "*":
+                result = (num1 * num2);
+                break;
+            case "-":
+                result = (num1 - num2);
+                break;
+            case "+":
+                result = (num1 + num2);
+                break;
+            default:
+                System.out.println("Некорректный оператор: 'оператор'");
+        }
+        return result;
     }
 }
