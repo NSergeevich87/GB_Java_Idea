@@ -10,18 +10,31 @@ public class Human extends Actor {
     }
     @Override
     public void setMakeOrder(boolean status) {
-
+        //isMakeOrder(status);
     }
     @Override
     public void setTakeOrder(boolean status) {
-
+        //isTakeOrder(status);
     }
+
     @Override
     public boolean isMakeOrder() {
-        return false;
+        return true;
     }
+
     @Override
     public boolean isTakeOrder() {
-        return false;
+        return true;
     }
+
+    //    @Override
+//    public boolean isMakeOrder(boolean status) {
+//        if (status) return true;
+//        else return false;
+//    }
+//    @Override
+//    public boolean isTakeOrder(boolean status) {
+//        if (status) return true;
+//        else return false;
+//    }
 }
