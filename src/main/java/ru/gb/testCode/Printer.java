@@ -20,5 +20,11 @@ public class Printer {
         Calculator calculator = new Calculator();
         int result = calculator.calculate(op, a, b);
         System.out.println(result);
+
+        //boolean status = true;
+        if (true && !false) { System.out.println("Success1"); }
+        if (true || false) { System.out.println("Success2"); }
+        if (true && !true) { System.out.println("Success3"); }
+        if (false || !true) { System.out.println("Success4"); }
     }
 }
