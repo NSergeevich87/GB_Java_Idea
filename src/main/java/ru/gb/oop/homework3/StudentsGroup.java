@@ -1,4 +1,4 @@
-package ru.gb.oop.seminario3;
+package ru.gb.oop.homework3;
 
 import java.util.ArrayList;
 import java.util.List;
