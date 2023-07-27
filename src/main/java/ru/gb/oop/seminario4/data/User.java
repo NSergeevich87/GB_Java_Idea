@@ -1,4 +1,4 @@
-package ru.gb.oseminar.data;
+package ru.gb.oop.seminario4.data;
 
 import java.time.LocalDate;
 
@@ -8,6 +8,10 @@ public class User {
     private String patronymic;
     private LocalDate dateOfBirth;
 
+    public User(String firstName, String secondName){
+        this.firstName = firstName;
+        this.secondName = secondName;
+    }
     public User(String firstName, String secondName, String patronymic, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.secondName = secondName;

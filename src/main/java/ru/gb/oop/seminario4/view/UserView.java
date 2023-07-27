@@ -1,8 +1,8 @@
-package ru.gb.oseminar.view;
+package ru.gb.oop.seminario4.view;
 
-import ru.gb.oseminar.data.Student;
-import ru.gb.oseminar.data.StudentGroup;
-import ru.gb.oseminar.data.User;
+import ru.gb.oop.seminario4.data.Student;
+import ru.gb.oop.seminario4.data.StudentGroup;
+import ru.gb.oop.seminario4.data.User;
 
 import java.util.List;
 import java.util.logging.Logger;

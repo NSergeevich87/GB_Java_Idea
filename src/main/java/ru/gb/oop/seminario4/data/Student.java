@@ -1,4 +1,4 @@
-package ru.gb.oseminar.data;
+package ru.gb.oop.seminario4.data;
 
 import java.time.LocalDate;
 

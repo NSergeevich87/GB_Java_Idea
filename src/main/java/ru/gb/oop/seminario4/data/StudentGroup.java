@@ -1,4 +1,4 @@
-package ru.gb.oseminar.data;
+package ru.gb.oop.seminario4.data;
 
 import java.util.List;
 
@@ -26,7 +26,9 @@ public class StudentGroup implements Iterable<Student>{
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-
+    public void createStudent(User user){
+        students.add((Student) user);
+    }
     @Override
     public String toString() {
         return "StudentGroup{" +

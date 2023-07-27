@@ -10,7 +10,7 @@ import ru.gb.oop.seminario4.view.UserView;
 import java.time.LocalDate;
 import java.util.List;
 
-public class UserController {
+public class OldUserController {
 
     private final DataService dataService = new DataService();
     private final StudentGroupService studentGroupService = new StudentGroupService();

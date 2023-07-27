@@ -1,15 +1,20 @@
 package ru.gb.oop.seminario4.controller;
 
-import ru.gb.oop.seminario4.data.User;
+import ru.gb.oop.seminario4.data.Student;
+import ru.gb.oop.seminario4.view.StudentView;
+import ru.gb.oop.seminario4.view.UserViewInterface;
 
 import java.time.LocalDate;
+import java.util.List;
 
-public class UserController implements IUserController{
+public class StudentController implements IUserController{
+
+    private UserViewInterface studentsView = new StudentView();
     @Override
     public void create(String firstName, String surName, String lastName){
-        User newUser = new User(firstName, lastName, surName, LocalDate.now());
+        Student newStudent = new Student(firstName, lastName, surName, LocalDate.now());
     }
-    public void printConsole(User user){
-
+    public void printConsole(List<Student> students){
+        studentsView.sendOnConsole(students);
     }
 }

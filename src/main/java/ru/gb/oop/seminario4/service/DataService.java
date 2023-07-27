@@ -1,7 +1,7 @@
-package ru.gb.oseminar.service;
+package ru.gb.oop.seminario4.service;
 
-import ru.gb.oseminar.data.Student;
-import ru.gb.oseminar.data.User;
+import ru.gb.oop.seminario4.data.Student;
+import ru.gb.oop.seminario4.data.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
