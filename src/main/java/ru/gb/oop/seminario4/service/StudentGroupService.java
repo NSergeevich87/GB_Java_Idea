@@ -8,6 +8,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class StudentGroupService {
+    /**
+     * Принцип единственной ответственности, данный класс выполняет только методы работы с группой студентов
+     * что соответствует и названию класса
+     */
     private StudentGroup studentGroup;
 
     public void createStudentGroup(Teacher teacher, List<Student> students) {

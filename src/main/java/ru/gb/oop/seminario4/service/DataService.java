@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataService {
-
+    /**
+     * Принцип единственной ответственности, данный класс выполняет только одну функцию, работа с датой.
+     */
     private List<User> users;
 
     public DataService() {

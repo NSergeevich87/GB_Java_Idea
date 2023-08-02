@@ -3,6 +3,12 @@ package ru.gb.oop.seminario4.data;
 import java.time.LocalDate;
 
 public class User {
+    /**
+     * Принцип инверсии зависимостей (DIP), зависимости внутри системы строятся на основе абстракций
+     */
+    /**
+     * Принцип единственной ответственности.
+     */
     private String firstName;
     private String secondName;
     private String patronymic;
@@ -50,7 +56,11 @@ public class User {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
+    /**
+     * Принцип открытости/закрытости, здесь мы не вносим изменения в родительский класс, а просто
+     * переопределяем метод/ы
+     * Принцип подстановки Барбары Лисков (LSP), переопределили метод, не нарушив функциональность.
+     */
     @Override
     public String toString() {
         return "User{" +

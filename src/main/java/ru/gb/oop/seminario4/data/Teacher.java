@@ -4,6 +4,12 @@ import java.time.LocalDate;
 import java.util.Comparator;
 
 public class Teacher extends User implements Comparable<Teacher>{
+    /**
+     * Принцип инверсии зависимостей (DIP), зависимости внутри системы строятся на основе абстракций
+     */
+    /**
+     * Принцип единственной ответственности.
+     */
 
     private Long teacherId;
 
@@ -24,7 +30,11 @@ public class Teacher extends User implements Comparable<Teacher>{
     public void setTeacherId(Long teacherId) {
         this.teacherId = teacherId;
     }
-
+    /**
+     * Принцип открытости/закрытости, здесь мы не вносим изменения в родительский класс, а просто
+     * переопределяем метод/ы
+     * Принцип подстановки Барбары Лисков (LSP), переопределили метод, не нарушив функциональность.
+     */
     @Override
     public String toString() {
         return "Teacher{" +
