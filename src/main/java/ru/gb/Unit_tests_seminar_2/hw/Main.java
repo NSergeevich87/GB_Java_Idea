@@ -1,4 +1,4 @@
-package seminars.second.hw;
+package ru.gb.Unit_tests_seminar_2.hw;
 
 public class Main {
 

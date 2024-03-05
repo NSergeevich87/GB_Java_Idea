@@ -1,4 +1,4 @@
-package ru.gb.Unit_tests_seminar_2.seminars.second.simple_shopping_cart;
+package ru.gb.Unit_tests_seminar_2.simple_shopping_cart;
 
 import java.util.List;
 import java.util.Scanner;

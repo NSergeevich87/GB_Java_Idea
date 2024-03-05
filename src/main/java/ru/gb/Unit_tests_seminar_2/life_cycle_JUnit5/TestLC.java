@@ -1,4 +1,4 @@
-package seminars.second.life_cycle_JUnit5;
+package ru.gb.Unit_tests_seminar_2.life_cycle_JUnit5;
 
 import org.junit.jupiter.api.*;
 

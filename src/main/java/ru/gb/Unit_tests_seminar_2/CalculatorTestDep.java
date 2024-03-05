@@ -1,5 +1,7 @@
 package ru.gb.Unit_tests_seminar_2;
 
+import ru.gb.Unit_tests_seminar_2.Calculator;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package seminars.second.hw;
+package ru.gb.Unit_tests_seminar_2.hw;
 
 public abstract class Vehicle {
     private String company;
