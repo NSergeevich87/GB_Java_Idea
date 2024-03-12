@@ -15,10 +15,9 @@ import ru.gb.Unit_tests_seminar_4.weather.WeatherService;
 
 import java.util.List;
 
+import static org.mockito.Mockito.mock;
+
 public class Main {
-
-
-
 
     //**
     // 4.3. Предположим, у вас есть класс WeatherService, который имеет метод getCurrentTemperature(),
@@ -30,17 +29,28 @@ public class Main {
     public static void main(String[] args) {
         // Создаем объект WeatherService. В реальной программе, этот класс
         // бы обращался к внешнему API для получения температуры.
-        WeatherService weatherService = new WeatherService();
+        //WeatherService weatherService = new WeatherService();
 
         // Создаем объект WeatherReporter, передаем ему WeatherService в конструктор.
-        WeatherReporter weatherReporter = new WeatherReporter(weatherService);
+        //WeatherReporter weatherReporter = new WeatherReporter(weatherService);
 
         // Получаем отчет о погоде.
-        String report = weatherReporter.generateReport();
+        //String report = weatherReporter.generateReport();
 
         // Выводим отчет на консоль.
-        System.out.println(report);
+        //System.out.println(report);
 
+        //======================================================================================
+        InMemoryBookRepository inMemoryBookRepository = new InMemoryBookRepository();
+
+        BookService bookService = new BookService(inMemoryBookRepository);
+
+        Book book = bookService.findBookById("1");
+        System.out.println(book.getId());
+        List<Book> AllBooks = bookService.findAllBooks();
+        for (int i = 0; i < AllBooks.size(); i++) {
+            System.out.println(i);
+        }
     }
 
 
@@ -203,3 +213,4 @@ public class Main {
 //        }
 //    }
 }
+
