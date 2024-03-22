@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.gb._auto_testing.semi_1.seminar.type.DeckEmptyException;
+import ru.gb._auto_testing.semi_1.seminar.exception.DeckEmptyException;
 
 /**
  * Тест кейс для тестирования объекта колоды

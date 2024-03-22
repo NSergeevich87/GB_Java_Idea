@@ -1,7 +1,8 @@
 package ru.gb._auto_testing.semi_1.seminar;
 
-import ru.gb._auto_testing.semi_1.seminar.type.DeckEmptyException;
+import ru.gb._auto_testing.semi_1.seminar.exception.DeckEmptyException;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
