@@ -13,6 +13,7 @@ import static io.restassured.RestAssured.given;
 public class GetCountryTest extends AccuweatherAbstractTest {
     @Test
     void GetLocalizedNameTest() {
+        //класс содержит только поля ID и LocalizedName, но полей в ответе больше
         List<Country> response = given()
                 .queryParam("apikey", getApiKey())
                 .queryParam("q", "Barcelona")
