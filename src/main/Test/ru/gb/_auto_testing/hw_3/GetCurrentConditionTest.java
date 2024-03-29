@@ -13,6 +13,7 @@ import static io.restassured.RestAssured.given;
 public class GetCurrentConditionTest extends AccuweatherAbstractTest {
     @Test
     void GetTemperatureTest() {
+        //класс Temperature не содердит поле LocalObservationDateTime, которые приходит в JSON
         List<Temperature> response = given()
                 .queryParam("apikey", getApiKey())
                 .queryParam("q", "Barcelona")
