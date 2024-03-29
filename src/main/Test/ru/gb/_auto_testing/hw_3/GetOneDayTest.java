@@ -11,6 +11,7 @@ import static io.restassured.RestAssured.given;
 public class GetOneDayTest extends AccuweatherAbstractTest{
     @Test
     void GetDailyForecastTest() {
+        //нужно было поправить класс Night, добавить поля PrecipitationType и PrecipitationIntensity
         DailyForecast response = given()
                 .queryParam("apikey", getApiKey())
                 .when()
