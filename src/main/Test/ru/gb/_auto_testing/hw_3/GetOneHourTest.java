@@ -11,6 +11,7 @@ import static io.restassured.RestAssured.given;
 public class GetOneHourTest extends AccuweatherAbstractTest{
     @Test
     void GetOneHourTest() {
+        //тут приходит массив, поэтому преобразование должно быть к List<Getonehour> через метод asList
         Getonehour response = given()
                 .queryParam("apikey", getApiKey())
                 .when()
