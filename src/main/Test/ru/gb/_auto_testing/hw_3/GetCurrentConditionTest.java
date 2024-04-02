@@ -22,6 +22,7 @@ public class GetCurrentConditionTest extends AccuweatherAbstractTest {
                 .statusCode(200)
                 .time(Matchers.lessThan(2000l))
                 .extract()
+            //тут приходит объект Currentcondition
                 .body().jsonPath().getList(".", Temperature.class);
 
         Assertions.assertEquals(21, response.get(0).getMetric());
