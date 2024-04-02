@@ -22,6 +22,7 @@ public class GetCountryTest extends AccuweatherAbstractTest {
                 .statusCode(200)
                 .time(Matchers.lessThan(2000l))
                 .extract()
+            //тут приходит объект Autocomplete
                 .body().jsonPath().getList(".", Country.class);
 
         Assertions.assertEquals("Barcelona", response.get(0).getLocalizedName());
