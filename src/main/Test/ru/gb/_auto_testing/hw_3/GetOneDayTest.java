@@ -20,6 +20,7 @@ public class GetOneDayTest extends AccuweatherAbstractTest{
                 .time(Matchers.lessThan(2000l))
                 .extract()
                 .response()
+            //тут не пройдёт преобразование к DailyForecast, т.к. приходит другой объект в JSON
                 .body().as(DailyForecast.class);
 
         Assertions.assertEquals(21,response.getTemperature());
