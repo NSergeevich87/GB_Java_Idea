@@ -20,6 +20,7 @@ public class GetOneHourTest extends AccuweatherAbstractTest{
                 .time(Matchers.lessThan(2000l))
                 .extract()
                 .response()
+            //тут приходит массив. надо было делать asList(".", Getonehour.class)
                 .body().as(Getonehour.class);
 
         Assertions.assertEquals(false,response.getHasPrecipitation());
