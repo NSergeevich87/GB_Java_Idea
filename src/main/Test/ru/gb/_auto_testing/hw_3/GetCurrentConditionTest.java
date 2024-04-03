@@ -4,6 +4,9 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.gb._auto_testing.hw_3.autocomplete.Autocomplete;
+import ru.gb._auto_testing.hw_3.currentcondition.Currentcondition;
+import ru.gb._auto_testing.hw_3.currentcondition.Imperial;
+import ru.gb._auto_testing.hw_3.currentcondition.Metric;
 import ru.gb._auto_testing.hw_3.currentcondition.Temperature;
 
 import java.util.List;
@@ -13,7 +16,7 @@ import static io.restassured.RestAssured.given;
 public class GetCurrentConditionTest extends AccuweatherAbstractTest {
     @Test
     void GetTemperatureTest() {
-        List<Temperature> response = given()
+        List<Metric> response = given()
                 .queryParam("apikey", getApiKey())
                 .queryParam("q", "Barcelona")
                 .when()
@@ -22,8 +25,8 @@ public class GetCurrentConditionTest extends AccuweatherAbstractTest {
                 .statusCode(200)
                 .time(Matchers.lessThan(2000l))
                 .extract()
-                .body().jsonPath().getList(".", Temperature.class);
+                .body().jsonPath().getList(".", Metric.class);
 
-        Assertions.assertEquals(21, response.get(0).getMetric());
+        Assertions.assertEquals(21, response.get(0).getUnit());
     }
 }

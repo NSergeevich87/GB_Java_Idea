@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLiteDialect</property>
+
+        <property name="connection.url">jdbc:sqlite:home.db</property>
+        <mapping class="ru.gb._auto_testing.hw_4.CourierInfoEntity"/>
+        <mapping class="ru.gb._auto_testing.hw_4.CustomersEntity"/>
+        <mapping class="ru.gb._auto_testing.hw_4.DeliveryEntity"/>
+        <mapping class="ru.gb._auto_testing.hw_4.OrdersEntity"/>
+        <mapping class="ru.gb._auto_testing.hw_4.OrdersProductsEntity"/>
+        <mapping class="ru.gb._auto_testing.hw_4.ProductsEntity"/>
+
+        <!--<property name="connection.url">jdbc:sqlite:demo.db</property>
+        <mapping class="ru.gb._auto_testing.semi_4.demo.EmployeeEntity"/>
+        <mapping class="ru.gb._auto_testing.semi_4.demo.EmployeeInfoEntity"/>
+
+        <property name="connection.url">jdbc:sqlite:seminar.db</property>
+        <mapping class="ru.gb._auto_testing.semi_4.seminar.ClientEntity"/>
+        <mapping class="ru.gb._auto_testing.semi_4.seminar.CreditEntity"/>
+        <mapping class="ru.gb._auto_testing.semi_4.seminar.CurrentEntity"/>
+        <mapping class="ru.gb._auto_testing.semi_4.seminar.DebitEntity"/>
+        <mapping class="ru.gb._auto_testing.semi_4.seminar.EmployeeEntity"/>-->
+
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>
