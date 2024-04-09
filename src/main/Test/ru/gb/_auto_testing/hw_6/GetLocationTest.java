@@ -1,5 +1,6 @@
 package ru.gb._auto_testing.hw_6;
 
+import io.qameta.allure.*;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,9 +10,16 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
+@Epic(value = "Тестирование API https://developer.accuweather.com/apis")
+@Feature(value = "Домашняя работа")
 public class GetLocationTest extends AccuweatherAbstractTest {
 
     @Test
+    @Description("GET Type")
+    @Link("")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Nikita Nikiforov")
+    @Story(value = "Тестирование метода getType")
     void getTypeTest() {
 
         List<Autocomplete> response = given()

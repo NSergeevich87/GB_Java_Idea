@@ -1,5 +1,6 @@
 package ru.gb._auto_testing.hw_6;
 
+import io.qameta.allure.*;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,8 +11,15 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
+@Epic(value = "Тестирование API https://developer.accuweather.com/apis")
+@Feature(value = "Домашняя работа")
 public class GetCurrentConditionTest extends AccuweatherAbstractTest {
     @Test
+    @Description("GET WeatherText")
+    @Link("")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Nikita Nikiforov")
+    @Story(value = "Тестирование метода getWeatherText")
     void GetWeatherTest() {
         List<Currentcondition> response = given()
                 .queryParam("apikey", getApiKey())
