@@ -17,6 +17,9 @@ public class MainPage {
     @FindBy(css = "nav li.mdc-menu-surface--anchor a")
     private WebElement usernameLinkInNavBar;
 
+    @FindBy(css = "p.svelte-uwkxn9")
+    private WebElement errorText;
+
     @FindBy(id = "create-btn")
     private WebElement createGroupButton;
 
@@ -25,6 +28,12 @@ public class MainPage {
 
     @FindBy(css = "form div.submit button")
     private WebElement submitButtonOnModalWindow;
+
+    @FindBy(css = "button.material-icons mdc-icon-button mdc-icon-button--display-flex smui-icon-button--size-button mdc-icon-button--reduced-size mdc-ripple-upgraded--unbounded mdc-ripple-upgraded")
+    private WebElement deletePostButton;
+
+    @FindBy(css = "span.mdc-button__label")
+    private WebElement saveButtonPost;
 
     @FindBy(xpath = "//span[text()='Creating Study Group']" +
             "//ancestor::div[contains(@class, 'form-modal-header')]//button")
@@ -45,9 +54,10 @@ public class MainPage {
 
     public void createGroup(String groupName) {
         wait.until(ExpectedConditions.visibilityOf(createGroupButton)).click();
-        wait.until(ExpectedConditions.visibilityOf(groupNameField)).sendKeys(groupName);
-        submitButtonOnModalWindow.click();
-        waitAndGetGroupTitleByText(groupName);
+        saveButtonPost.click();
+        //wait.until(ExpectedConditions.visibilityOf(groupNameField)).sendKeys(groupName);
+        //submitButtonOnModalWindow.click();
+        //waitAndGetGroupTitleByText(groupName);
     }
 
     public void closeCreateGroupModalWindow() {
@@ -55,9 +65,18 @@ public class MainPage {
         wait.until(ExpectedConditions.invisibilityOf(closeCreateGroupIcon));
     }
 
+    public void clickDeletePostButton() {
+        deletePostButton.click();
+    }
+
     public String getUsernameLabelText() {
         return wait.until(ExpectedConditions.visibilityOf(usernameLinkInNavBar))
                 .getText().replace("\n", " ");
+    }
+
+    public String getLoggingErrorText() {
+        return wait.until(ExpectedConditions.visibilityOf(errorText))
+                .getText();
     }
 
     public void clickTrashIconOnGroupWithTitle(String title) {

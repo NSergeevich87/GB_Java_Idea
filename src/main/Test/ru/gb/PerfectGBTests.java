@@ -28,11 +28,15 @@ public class PerfectGBTests {
     // ====================
     private static String USERNAME;
     private static String PASSWORD;
+    private static String USERNAME_emp;
+    private static String PASSWORD_emp;
     @BeforeAll
     public static void setupClass() {
         System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         USERNAME = "MEGAUSERNAME";
         PASSWORD = "8c57d8f638";
+        USERNAME_emp = "";
+        PASSWORD_emp = "";
     }
     @BeforeEach
     public void setupTest() {
@@ -79,7 +83,25 @@ public class PerfectGBTests {
         String groupTestName = "New Test Group " + System.currentTimeMillis();
         mainPage.createGroup(groupTestName);
 
-        mainPage.closeCreateGroupModalWindow();
+        assertTrue(mainPage.getUsernameLabelText().contains(USERNAME));
+    }
+
+    @Test
+    public void loggingErrorTest() {
+        loginPage.login(USERNAME_emp, PASSWORD_emp);
+        mainPage = new MainPage(driver, wait);
+        //assertTrue(mainPage.getUsernameLabelText().contains(USERNAME));
+        assertTrue(mainPage.getLoggingErrorText().contains("Invalid credentials."));
+    }
+
+    @Test
+    public void changeStudentsInGroupTest() {
+        loginPage.login(USERNAME, PASSWORD);
+        mainPage = new MainPage(driver, wait);
+        assertTrue(mainPage.getUsernameLabelText().contains(USERNAME));
+
+        String groupTestName = "New Test Group " + System.currentTimeMillis();
+        mainPage.createGroup(groupTestName);
 
         assertEquals("active", mainPage.getStatusOfGroupWithTitle(groupTestName));
         mainPage.clickTrashIconOnGroupWithTitle(groupTestName);
