@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
+import java.util.function.Function;
 
 public class GroupTableRow {
     private final WebElement root;
@@ -28,5 +29,26 @@ public class GroupTableRow {
                 .pollingEvery(Duration.ofSeconds(5))
                 .ignoring(NoSuchElementException.class))
                 .until(root -> root.findElement(By.xpath("./td/button[text()='delete']")));
+    }
+
+    public void clickAddStudentsIcon() {
+        root.findElement(By.cssSelector("td button i.material-icons")).click();
+    }
+
+    public void clickZoomInIcon() {
+        root.findElement(By.xpath(".//td/button[contains(., 'zoom_in')]")).click();
+    }
+
+    public void waitStudentsCount(int expectedCount) {
+        waitUntil(root ->
+                root.findElement(By.xpath("./td[4]//span[text()='%s']".formatted(expectedCount))));
+    }
+
+    private void waitUntil(Function<WebElement, WebElement> until) {
+        new FluentWait<>(root)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(java.util.NoSuchElementException.class)
+                .until(until);
     }
 }

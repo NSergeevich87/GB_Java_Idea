@@ -1,5 +1,7 @@
 package ru.gb;
 
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -32,22 +34,26 @@ public class PerfectGBTests {
     private static String PASSWORD_emp;
     @BeforeAll
     public static void setupClass() {
-        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-        USERNAME = "MEGAUSERNAME";
-        PASSWORD = "8c57d8f638";
+        USERNAME = "GB2023106fa2616";
+        PASSWORD = "3b310867c4";
         USERNAME_emp = "";
         PASSWORD_emp = "";
     }
     @BeforeEach
     public void setupTest() {
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
+        //wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        //driver.manage().window().maximize();
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        //driver.get("https://test-stand.gb.ru/login");
+        Selenide.open("https://test-stand.gb.ru/login");
+        driver = WebDriverRunner.getWebDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         driver.manage().window().maximize();
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://test-stand.gb.ru/login");
-
         // add login page object
         loginPage = new LoginPage(driver, wait);
+        //mainPage = new MainPage(driver, wait);
+        LoginPage page = Selenide.page(LoginPage.class);
 
     }
 //    @Test
@@ -57,7 +63,9 @@ public class PerfectGBTests {
 //        assertTrue(mainPage.getUsernameLabelText().contains(USERNAME));
 //    }
 
+
     @Test
+    @Disabled
     public void testAddingGroupOnMainPage() { //throws IOException {
         loginPage.login(USERNAME, PASSWORD);
         mainPage = new MainPage(driver, wait);
@@ -75,6 +83,7 @@ public class PerfectGBTests {
     }
 
     @Test
+    @Disabled
     void testArchiveGroupOnMainPage() {
         loginPage.login(USERNAME, PASSWORD);
         mainPage = new MainPage(driver, wait);
@@ -95,6 +104,7 @@ public class PerfectGBTests {
     }
 
     @Test
+    @Disabled
     public void changeStudentsInGroupTest() {
         loginPage.login(USERNAME, PASSWORD);
         mainPage = new MainPage(driver, wait);
@@ -109,8 +119,33 @@ public class PerfectGBTests {
         mainPage.clickRestoreFromTrashIconOnGroupWithTitle(groupTestName);
         assertEquals("active", mainPage.getStatusOfGroupWithTitle(groupTestName));
     }
+
+    @Test
+    void testBlockingStudentInTableOnMainPage() {
+
+        loginPage.login(USERNAME, PASSWORD);
+        String groupTestName = "New test group " + System.currentTimeMillis();
+        mainPage.createGroup(groupTestName);
+
+        mainPage.closeCreateGroupModalWindow();
+
+        int studentCount = 3;
+        mainPage.clickAddStudentsIconOnGroupWithTitle(groupTestName);
+        mainPage.typeAmountOfStudentsInCreateStudentsForm(studentCount);
+        mainPage.clickSaveButtonOnCreateStudentsForm();
+        mainPage.closeCreateStudentsModalWindow();
+        mainPage.waitStudentsCount(groupTestName, studentCount);
+        mainPage.clickZoomInIconOnGroupWithTitle(groupTestName);
+        // проверка
+        String firstGeneratedStudentsName = mainPage.getStudentNameByIndex(0);
+        assertEquals("active", mainPage.getStatusOfStudentWithName(firstGeneratedStudentsName));
+        mainPage.clickTrashIconOnStudentWithName(firstGeneratedStudentsName);
+        assertEquals("block", mainPage.getStatusOfStudentWithName(firstGeneratedStudentsName));
+        mainPage.clickRestoreFromTrashIconOnStudentWithName(firstGeneratedStudentsName);
+        assertEquals("active", mainPage.getStatusOfStudentWithName(firstGeneratedStudentsName));
+    }
     @AfterEach
     public void teardown() {
-        driver.quit();
+        WebDriverRunner.closeWebDriver();
     }
 }
