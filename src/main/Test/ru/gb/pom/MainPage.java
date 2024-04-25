@@ -1,5 +1,11 @@
 package ru.gb.pom;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+import ru.gb.pom.elements.GroupTableRow;
+import ru.gb.pom.elements.StudentTableRow;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,75 +13,147 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.gb.pom.elements.GroupTableRow;
 
 import java.util.List;
 
+import static com.codeborne.selenide.Selenide.*;
+
 public class MainPage {
-    private final WebDriverWait wait;
 
-    @FindBy(css = "nav li.mdc-menu-surface--anchor a")
-    private WebElement usernameLinkInNavBar;
+    //private final WebDriverWait wait;
+    private SelenideElement usernameLinkInNavBar = $("nav li.mdc-menu-surface--anchor a");
+    private SelenideElement createGroupButton = $("create-btn");
+    private SelenideElement groupNameField = $x("//form//span[contains(text(), 'Group name')]/following-sibling::input");
+    private SelenideElement submitButtonOnModalWindow = $("form div.submit button");
+    private SelenideElement closeCreateGroupIcon = $x("//span[text()='Creating Study Group']" +
+            "//ancestor::div[contains(@class, 'form-modal-header')]//button");
 
-    @FindBy(id = "create-btn")
-    private WebElement createGroupButton;
+    // Create Students Modal Window
+    private SelenideElement createStudentsFormInput = $("div#generateStudentsForm-content input");
+    private SelenideElement saveCreateStudentsForm = $("div#generateStudentsForm-content div.submit button");
+    private SelenideElement closeCreateStudentsFormIcon = $x("//h2[@id='generateStudentsForm-title']/../button");
 
-    @FindBy(xpath = "//form//span[contains(text(), 'Group name')]/following-sibling::input")
-    private WebElement groupNameField;
+    private ElementsCollection rowsInGroupTable = $$x("//table[@aria-label='Tutors list']/tbody/tr");
+    private ElementsCollection rowsInStudentTable = $$x("//table[@aria-label='User list']/tbody/tr");
 
-    @FindBy(css = "form div.submit button")
-    private WebElement submitButtonOnModalWindow;
+//    public MainPage(WebDriver driver, WebDriverWait wait) {
+//        this.wait = wait;
+//        PageFactory.initElements(driver, this);
+//    }
 
-    @FindBy(xpath = "//span[text()='Creating Study Group']" +
-            "//ancestor::div[contains(@class, 'form-modal-header')]//button")
-    private WebElement closeCreateGroupIcon;
-
-    @FindBy(xpath = "//table[@aria-label='Tutors list']/tbody/tr")
-    private List<WebElement> rowsInGroupTable;
-
-    public MainPage(WebDriver driver, WebDriverWait wait) {
-        this.wait = wait;
-        PageFactory.initElements(driver, this);
-    }
-
-    public WebElement waitAndGetGroupTitleByText(String title) {
+    public SelenideElement waitAndGetGroupTitleByText(String title) {
         String xpath = String.format("//table[@aria-label='Tutors list']/tbody//td[text()='%s']", title);
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+        Selenide.sleep(3000);
+        return (SelenideElement) ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath));
+        //return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
     public void createGroup(String groupName) {
-        wait.until(ExpectedConditions.visibilityOf(createGroupButton)).click();
-        wait.until(ExpectedConditions.visibilityOf(groupNameField)).sendKeys(groupName);
+        createGroupButton.should(Condition.visible).click();
+        groupNameField.should(Condition.visible).setValue(groupName);
+        //wait.until(ExpectedConditions.visibilityOf(createGroupButton)).click();
+        //wait.until(ExpectedConditions.visibilityOf(groupNameField)).sendKeys(groupName);
         submitButtonOnModalWindow.click();
         waitAndGetGroupTitleByText(groupName);
     }
 
     public void closeCreateGroupModalWindow() {
         closeCreateGroupIcon.click();
-        wait.until(ExpectedConditions.invisibilityOf(closeCreateGroupIcon));
+        closeCreateGroupIcon.should(Condition.disappear);
+        //wait.until(ExpectedConditions.invisibilityOf(closeCreateGroupIcon));
+    }
+
+    public void typeAmountOfStudentsInCreateStudentsForm(int amount) {
+        createStudentsFormInput.should(Condition.visible).setValue(String.valueOf(amount));
+//        wait.until(ExpectedConditions.visibilityOf(createStudentsFormInput))
+//                .sendKeys(String.valueOf(amount));
+    }
+
+    public void clickSaveButtonOnCreateStudentsForm() throws InterruptedException {
+        saveCreateStudentsForm.should(Condition.visible).click();
+        //wait.until(ExpectedConditions.visibilityOf(saveCreateStudentsForm)).click();
+        Thread.sleep(5000);
+    }
+
+    public void closeCreateStudentsModalWindow() {
+        closeCreateStudentsFormIcon.click();
+        closeCreateStudentsFormIcon.should(Condition.disappear);
+        //wait.until(ExpectedConditions.invisibilityOf(closeCreateStudentsFormIcon));
     }
 
     public String getUsernameLabelText() {
-        return wait.until(ExpectedConditions.visibilityOf(usernameLinkInNavBar))
-                .getText().replace("\n", " ");
+        return usernameLinkInNavBar.should(Condition.visible).getText().replace("\n", " ");
+//        return wait.until(ExpectedConditions.visibilityOf(usernameLinkInNavBar))
+//                .getText().replace("\n", " ");
     }
 
+    // Group Table Section
     public void clickTrashIconOnGroupWithTitle(String title) {
-        getRowByTitle(title).clickTrashIcon();
+
+        getGroupRowByTitle(title).clickTrashIcon();
     }
 
     public void clickRestoreFromTrashIconOnGroupWithTitle(String title) {
-        getRowByTitle(title).clickRestoreFromTrashIcon();
+        getGroupRowByTitle(title).clickRestoreFromTrashIcon();
+    }
+
+    public void clickAddStudentsIconOnGroupWithTitle(String title) {
+
+        getGroupRowByTitle(title).clickAddStudentsIcon();
+    }
+
+    public void clickZoomInIconOnGroupWithTitle(String title) {
+
+        getGroupRowByTitle(title).clickZoomInIcon();
     }
 
     public String getStatusOfGroupWithTitle(String title) {
-        return getRowByTitle(title).getStatus();
+
+        return getGroupRowByTitle(title).getStatus();
     }
 
-    private GroupTableRow getRowByTitle(String title) {
-        return rowsInGroupTable.stream()
-                .map(GroupTableRow::new)//.map(root -> new GroupTableRow(root))//.map(GroupTableRow::new)
+    private GroupTableRow getGroupRowByTitle(String title) {
+        return rowsInGroupTable
+                .asDynamicIterable()
+                .stream()
+                .map(GroupTableRow::new)
                 .filter(row -> row.getTitle().equals(title))
                 .findFirst().orElseThrow();
     }
+
+    // Students Table Section
+
+    public void clickTrashIconOnStudentWithName(String name) {
+
+        getStudentRowByName(name).clickTrashIcon();
+    }
+
+    public void clickRestoreFromTrashIconOnStudentWithName(String name) {
+        getStudentRowByName(name).clickRestoreFromTrashIcon();
+    }
+
+    public String getStatusOfStudentWithName(String name) {
+
+        return getStudentRowByName(name).getStatus();
+    }
+
+    public String getFirstGeneratedStudentName() {
+        //wait.until(ExpectedConditions.visibilityOfAllElements(rowsInStudentTable));
+        return rowsInStudentTable
+                .asDynamicIterable()
+                .stream()
+                .map(StudentTableRow::new)
+                .findFirst().orElseThrow().getName();
+    }
+
+    private StudentTableRow getStudentRowByName(String name) {
+        //wait.until(ExpectedConditions.visibilityOfAllElements(rowsInStudentTable));
+        return rowsInStudentTable
+                .asDynamicIterable()
+                .stream()
+                .map(StudentTableRow::new)
+                .filter(row -> row.getName().equals(name))
+                .findFirst().orElseThrow();
+    }
+
 }
