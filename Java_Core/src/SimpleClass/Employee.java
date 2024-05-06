@@ -1,6 +1,10 @@
 package SimpleClass;
 
 public class Employee {
+    public static enum Genders {
+        MALE,
+        FEMALE
+    }
     private static final int CURRENT_YEAR = 2024;
     String name;
     String midName;
@@ -9,11 +13,12 @@ public class Employee {
     String phone;
     int salary;
     int birth;
+    Genders gender;
     String month = "09";
     String day = "12";
 
     public Employee(String name, String midName, String surName,
-                    String phone, String position, int salary, int birth) {
+                    String phone, String position, int salary, int birth, Genders gen) {
         this.name = name;
         this.midName = midName;
         this.surName = surName;
@@ -21,7 +26,13 @@ public class Employee {
         this.phone = phone;
         this.salary = salary;
         this.birth = birth;
-
+        this.gender = gen;
+    }
+    public void setGender(Genders gen) {
+        this.gender = gen;
+    }
+    public Genders getGender() {
+        return gender;
     }
 
     public String getName() {

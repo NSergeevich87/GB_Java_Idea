@@ -1,6 +1,10 @@
 package SimpleClass;
 
 public class Boss extends Employee {
+    public enum Gender {
+        MALE,
+        FEMALE
+    }
     private static final int CURRENT_YEAR = 2024;
     String name;
     String midName;
@@ -9,6 +13,8 @@ public class Boss extends Employee {
     String phone;
     int salary;
     int birth;
+    Genders gender;
+
     String month = "09";
     String day = "12";
     public Boss(String name,
@@ -17,8 +23,9 @@ public class Boss extends Employee {
                 String phone,
                 String position,
                 int salary,
-                int birth) {
-        super(name, midName, surName, phone, position, salary, birth);
+                int birth,
+                Genders gender) {
+        super(name, midName, surName, phone, position, salary, birth, gender);
     }
 
     public static void setSalary(Employee o, int salary) {
