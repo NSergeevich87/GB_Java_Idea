@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3438f3ba-1200-4b9d-adef-d2df2f6fe3e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/SimpleClass/Shop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SimpleClass/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleClass/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SimpleClass/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleClass/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleClass/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleClass/Boss.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleClass/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleClass/Shop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleClass/evenNums.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,13 +23,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="gava_core_hw_3" />
+        <entry key="$PROJECT_DIR$/.." value="gava_core_hw_4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -39,13 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "settings.editor.selected.configurable": "Docker"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Professional\Documents\Java\GB_Java_Idea\Java_Core" />
+      <recent name="C:\Users\Professional\Documents\Java\GB_Java_Idea\Java_Core\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Docker.Dockerfile">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Java_Core" />
@@ -53,8 +64,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
+    <configuration name="src/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="src/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.Dockerfile" />
+        <item itemvalue="Docker.src/Dockerfile" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
